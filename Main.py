@@ -36,10 +36,31 @@ class Graph:
 
 if __name__ == '__main__':
     contents = open("berlin52.txt", "r").readlines() #load data
-    n = int(contents[0]) # number of vertex
-    contents = contents[1:] #coordinates of vertex (starts at one)
-    graph =Graph(n, contents)
-    greedySol=zachlanne.Greedy_Solution(graph)
-    AcoSol=TSP_concurrent.antcolony(graph)
-    printResults(greedySol, AcoSol)
-
+    i=0
+    while i<5:
+        if(i==0):
+            contents = open("berlin52.txt", "r").readlines()  # load data
+            print("wyniki dla berlin52:")
+        if(i==1):
+            contents = open("bier127.txt", "r").readlines()  # load data
+            print("wyniki dla bier127:")
+        if (i == 2):
+            contents = open("tsp250.txt", "r").readlines()  # load data
+            print("wyniki dla tsp250:")
+        if (i == 3):
+            contents = open("tsp500.txt", "r").readlines()  # load data
+            print("wyniki dla tsp500:")
+        #if (i == 4):
+         #   contents = open("tsp1000.txt", "r").readlines()  # load data
+          #  print("wyniki dla tsp1000:")
+           # niestety dla TSP1000 nie dziala greedy bo jest za gleboka rekurencja,
+        # a ACO muli tak ze nie jest w stanie wydac odpowiedzi
+            #
+        n = int(contents[0]) # number of vertex
+        contents = contents[1:] #coordinates of vertex (starts at one)
+        graph =Graph(n, contents)
+        greedySol=zachlanne.Greedy_Solution(graph)
+        AcoSol=TSP_concurrent.antcolony(graph)
+        printResults(greedySol, AcoSol)
+        print("---------------------------------------------------------------------")
+        i=i+1
