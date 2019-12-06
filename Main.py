@@ -1,6 +1,8 @@
 from math import sqrt
+from multiprocessing import freeze_support
+
 import zachlanne
-import TSP_heuristic
+import TSP_concurrent
 def printResults(greedySol, AcoSol):
     print("Algorytm zachłanny: \n" + str(greedySol) + "\n")
     print("Ant Colony Optimization: \n" + str(AcoSol) + "\n")
@@ -32,14 +34,12 @@ class Graph:
                 p1, x1, y1 = int(p1)-1, int(x1), int(y1)
                 self.matrix[p][p1] = self.matrix[p1][p] = distance(x, x1, y, y1)
 
-def main():
+if __name__ == '__main__':
     contents = open("berlin52.txt", "r").readlines() #load data
     n = int(contents[0]) # number of vertex
     contents = contents[1:] #coordinates of vertex (starts at one)
     graph =Graph(n, contents)
     greedySol=zachlanne.Greedy_Solution(graph)
-    AcoSol=TSP_heuristic.antcolony(graph)
-
+    AcoSol=TSP_concurrent.antcolony(graph)
     printResults(greedySol, AcoSol)
 
-main()

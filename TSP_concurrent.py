@@ -1,7 +1,7 @@
 from math import sqrt,inf
 import random
 import time
-import multiprocessing as mp
+import multiprocessing
 import concurrent.futures
 def randompick(distance,trail,tabu): #based on probability
     a,b = 1,15 #a=trail factor,b=distance factor
